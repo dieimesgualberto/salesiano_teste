@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Cursos;
+use App\Turmas;
 use Illuminate\Http\Request;
 
-class CursosController extends Controller
+class TurmasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class CursosController extends Controller
      */
     public function index()
     {
-        return view('cursos_list');
+        //
     }
 
     /**
@@ -41,10 +41,10 @@ class CursosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Cursos  $cursos
+     * @param  \App\Turmas  $turmas
      * @return \Illuminate\Http\Response
      */
-    public function show(Cursos $cursos)
+    public function show(Turmas $turmas)
     {
         //
     }
@@ -52,10 +52,10 @@ class CursosController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Cursos  $cursos
+     * @param  \App\Turmas  $turmas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cursos $cursos)
+    public function edit(Turmas $turmas)
     {
         //
     }
@@ -64,10 +64,10 @@ class CursosController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Cursos  $cursos
+     * @param  \App\Turmas  $turmas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cursos $cursos)
+    public function update(Request $request, Turmas $turmas)
     {
         //
     }
@@ -75,10 +75,10 @@ class CursosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Cursos  $cursos
+     * @param  \App\Turmas  $turmas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cursos $cursos)
+    public function destroy(Turmas $turmas)
     {
         //
     }
