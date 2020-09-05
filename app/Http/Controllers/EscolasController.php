@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Escola;
+use App\Escolas;
 use Illuminate\Http\Request;
 
-class EscolaController extends Controller
+class EscolasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,8 @@ class EscolaController extends Controller
      */
     public function index()
     {
-        //
+        $escolas = Escolas::all();
+        return view('escolas_list', ['escolas' => $escolas]);
     }
 
     /**
