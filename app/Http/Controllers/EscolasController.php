@@ -25,7 +25,7 @@ class EscolasController extends Controller
      */
     public function create()
     {
-        //
+        return view('escolas_create');
     }
 
     /**
@@ -36,16 +36,23 @@ class EscolasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $escola = new Escolas;
+
+        $escola->nome = $request->nome;
+        $escola->sigla = $request->sigla;
+        $escola->cidade = $request->cidade;
+        $escola->estado = $request->estado;
+
+        $escola->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Escola  $escola
+     * @param  \App\Escolas  $escola
      * @return \Illuminate\Http\Response
      */
-    public function show(Escola $escola)
+    public function show(Escolas $escolas)
     {
         //
     }
@@ -53,34 +60,42 @@ class EscolasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Escola  $escola
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Escola $escola)
-    {
-        //
+    public function edit($id)
+    {   
+        $escola = Escolas::find($id);
+        return view('escolas_edit', ['escola' => $escola]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Escola  $escola
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Escola $escola)
+    public function update(Request $request, int $id)
     {
-        //
+        $escola = Escolas::find($id);
+
+        $escola->nome = $request->nome;
+        $escola->sigla = $request->sigla;
+        $escola->cidade = $request->cidade;
+        $escola->estado = $request->estado;
+
+        $escola->save();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Escola  $escola
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Escola $escola)
+    public function destroy(int $id)
     {
-        //
+        Escolas::destroy($id);
     }
 }
