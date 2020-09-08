@@ -97,5 +97,9 @@ class EscolasController extends Controller
     public function destroy(int $id)
     {
         Escolas::destroy($id);
+        {
+            $this->escolas->destroy($id);
+            return($del)?"sim":"não";
+        }
     }
 }
