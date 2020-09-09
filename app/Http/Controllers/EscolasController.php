@@ -44,6 +44,7 @@ class EscolasController extends Controller
         $escola->estado = $request->estado;
 
         $escola->save();
+        return redirect('escolas');
     }
 
     /**
@@ -86,6 +87,7 @@ class EscolasController extends Controller
         $escola->estado = $request->estado;
 
         $escola->save();
+        return redirect('escolas');
     }
 
     /**
@@ -98,8 +100,8 @@ class EscolasController extends Controller
     {
         Escolas::destroy($id);
         {
-            $this->escolas->destroy($id);
-            return($del)?"sim":"não";
+            Escolas::destroy($id);
+            return true;
         }
     }
 }
