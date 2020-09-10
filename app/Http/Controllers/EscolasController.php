@@ -15,7 +15,7 @@ class EscolasController extends Controller
     public function index()
     {
         $escolas = Escolas::all();
-        return view('escolas_list', ['escolas' => $escolas]);
+        return view('escolas/list', ['escolas' => $escolas]);
     }
 
     /**
@@ -25,7 +25,7 @@ class EscolasController extends Controller
      */
     public function create()
     {
-        return view('escolas_create');
+        return view('escolas/create');
     }
 
     /**
@@ -67,7 +67,7 @@ class EscolasController extends Controller
     public function edit($id)
     {   
         $escola = Escolas::find($id);
-        return view('escolas_edit', ['escola' => $escola]);
+        return view('escolas/edit', ['escola' => $escola]);
     }
 
     /**

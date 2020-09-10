@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Series;
+use App\Cursos;
 use Illuminate\Http\Request;
 
 class SeriesController extends Controller
@@ -14,7 +15,8 @@ class SeriesController extends Controller
      */
     public function index()
     {
-        //
+        $series = Series::all();
+        return view('series/list', ['series' => $series]);
     }
 
     /**
@@ -24,7 +26,8 @@ class SeriesController extends Controller
      */
     public function create()
     {
-        //
+        $cursos = Cursos::all();
+        return view('series/create',  ['cursos' => $cursos]);
     }
 
     /**
@@ -35,7 +38,15 @@ class SeriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $serie = new Series;
+
+        $serie->nome = $request->nome;
+        $serie->sigla = $request->sigla;
+        $serie->descricao = $request->descricao;
+        $serie->curso_id = $request->curso;
+
+        $serie->save();
+        return redirect('series');
     }
 
     /**
@@ -52,34 +63,45 @@ class SeriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Series  $series
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Series $series)
-    {
-        //
+    public function edit($id)
+    {   
+        $serie = Series::find($id);
+        $cursos = Cursos::all();
+        return view('series/edit', ['serie' => $serie, 'cursos' => $cursos]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Series  $series
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Series $series)
+    public function update(Request $request, int $id)
     {
-        //
+        $serie = Series::find($id);
+
+        $serie->nome = $request->nome;
+        $serie->sigla = $request->sigla;
+        $serie->descricao = $request->descricao;
+        $serie->curso_id = $request->curso;
+
+        $serie->save();
+        return redirect('series');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Series  $series
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Series $series)
+    public function destroy(int $id)
     {
-        //
+        Series::destroy($id);
+        return true;
     }
 }

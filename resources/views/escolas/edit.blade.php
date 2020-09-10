@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Escola</title>
-</head>
-<body>
-    <H1>Editar Escola</H1>
+@extends('base')
+
+@section('title', 'Editar Escola')
+
+@section('content')
+    <div class="title m-b-md">
+    Editar Escola
+    </div>
     <form action="/escolas/{{$escola->id}}" method="post">
     @method('PUT')
         @csrf
@@ -20,6 +19,4 @@
         <input type="text" name="estado" value="{{$escola->estado}}">
         <button type="submit">Salvar</button>
     </form>
-    
-</body>
-</html>
+@endsection

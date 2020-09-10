@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cursos;
+use App\Escolas;
 use Illuminate\Http\Request;
 
 class CursosController extends Controller
@@ -14,7 +15,8 @@ class CursosController extends Controller
      */
     public function index()
     {
-        return view('cursos_list');
+        $cursos = Cursos::all();
+        return view('cursos/list', ['cursos' => $cursos]);
     }
 
     /**
@@ -24,7 +26,8 @@ class CursosController extends Controller
      */
     public function create()
     {
-        //
+        $escolas = Escolas::all();
+        return view('cursos/create',  ['escolas' => $escolas]);
     }
 
     /**
@@ -35,7 +38,14 @@ class CursosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $curso = new Cursos;
+
+        $curso->nome = $request->nome;
+        $curso->sigla = $request->sigla;
+        $curso->escola_id = $request->escola;
+
+        $curso->save();
+        return redirect('cursos');
     }
 
     /**
@@ -52,34 +62,44 @@ class CursosController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Cursos  $cursos
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cursos $cursos)
-    {
-        //
+    public function edit($id)
+    {   
+        $curso = Cursos::find($id);
+        $escolas = Escolas::all();
+        return view('cursos/edit', ['curso' => $curso, 'escolas' => $escolas]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Cursos  $cursos
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cursos $cursos)
+    public function update(Request $request, int $id)
     {
-        //
+        $curso = Cursos::find($id);
+
+        $curso->nome = $request->nome;
+        $curso->sigla = $request->sigla;
+        $curso->escola_id = $request->escola;
+
+        $curso->save();
+        return redirect('cursos');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Cursos  $cursos
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cursos $cursos)
+    public function destroy(int $id)
     {
-        //
+        Cursos::destroy($id);
+        return true;
     }
 }

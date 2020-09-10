@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Escola</title>
-</head>
-<body>
-    <H1>Criar Escola</H1>
+@extends('base')
+
+@section('title', 'Criar Escola')
+
+@section('content')
+    <div class="title m-b-md">
+    Criar Escola
+    </div>
     <form action="/escolas" method="post">
         @csrf
         <label for="">Nome:</label>
@@ -19,5 +18,4 @@
         <input type="text" name="estado">
         <button type="submit">Criar</button>
     </form>
-</body>
-</html>
+@endsection
