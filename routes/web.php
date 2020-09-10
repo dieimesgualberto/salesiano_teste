@@ -22,3 +22,6 @@ Route::resource('cursos', "CursosController");
 Route::resource('series', "SeriesController");
 Route::resource('turmas', "TurmasController");
 Route::resource('alunos', "AlunosController");
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
