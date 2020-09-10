@@ -12,6 +12,7 @@ Teste para a vaga programador PHP - 2020 - Inspetoria São João Bosco
 
     Copie o arquivo ".env.exemple" para ".env" e mude as configurações conforma a necessidade.
     Rode o "composer install".
-    Rode o "npm install".
-    Rode o "npm run dev".
+    Rode o "php artisan key:generate".
+    Rode o "php artisan migrate".
+    Rode o "php artisan db:seed".
     E por ultimo rode "php artisan serve".

@@ -4,23 +4,31 @@
 
 @section('content')
     <div class="title m-b-md">
-    Criar Serie
+    <h3>Criar Serie</h3>
     </div>
     <form action="/series" method="post">
         @csrf
-        <label for="id_nome">Nome:</label>
-        <input type="text" name="nome" id="id_nome">
-        <label for="id_sigla">Sigla:</label>
-        <input type="text" name="sigla" id="id_sigla">
-        <label for="id_sigla">Descrição:</label>
-        <input type="text" name="descricao" id="id_descricao">
-        <label for="id_curso">Curso:</label>
-        <select name="curso" id="id_curso">
-            <option value="">-------</option>
-            @foreach ($cursos as $curso)
-            <option value="{{ $curso->id }}">{{ $curso->nome }}</option>
-            @endforeach
-        </select>
-        <button type="submit">Criar</button>
+        <div class="form-group">
+            <label for="id_nome">Nome:</label>
+            <input class="form-control" type="text" name="nome" id="id_nome">
+        </div>
+        <div class="form-group">    
+            <label for="id_sigla">Sigla:</label>
+            <input class="form-control" type="text" name="sigla" id="id_sigla">
+        </div>
+        <div class="form-group">    
+            <label for="id_sigla">Descrição:</label>
+            <input class="form-control" type="text" name="descricao" id="id_descricao">
+        </div> 
+        <div class="form-group">   
+            <label for="id_curso">Curso:</label>
+            <select class="form-control" name="curso" id="id_curso">
+                <option value="">-------</option>
+                @foreach ($cursos as $curso)
+                <option value="{{ $curso->id }}">{{ $curso->nome }}</option>
+                @endforeach
+            </select>
+        </div>    
+        <button class="btn btn-primary" type="submit">Criar</button>
     </form>
 @endsection

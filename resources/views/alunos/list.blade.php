@@ -5,6 +5,8 @@
 @section('content')
 <h2>Alunos</h2>
 <a href="/alunos/create"><button class="btn btn-primary">Criar</button></a>
+<br>
+<br>
 <div>
     @csrf
     @foreach ($alunos as $aluno)
