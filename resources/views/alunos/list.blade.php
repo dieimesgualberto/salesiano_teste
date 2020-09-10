@@ -3,10 +3,8 @@
 @section('title', 'Alunos')
 
 @section('content')
-<div class="title m-b-md">
-    Alunos
-</div>
-<a href="/alunos/create"><button>Criar</button></a>
+<h2>Alunos</h2>
+<a href="/alunos/create"><button class="btn btn-primary">Criar</button></a>
 <div>
     @csrf
     @foreach ($alunos as $aluno)
@@ -16,7 +14,9 @@
         <p>Email: {{ $aluno->email }}</p>
         <p>Status: {{ $aluno->status }}</p>
         <p>Turma: {{ $aluno->turma->nome }}</p>
-        <a href="/alunos/{{$aluno->id}}/edit"><button class="">Editar</button></a> | <button data-path="{{url("/alunos/$aluno->id")}}" class="js-del">Deletar</button>
+        <a href="/alunos/{{$aluno->id}}/edit">
+            <button class="btn btn-warning">Editar</button>
+        </a> | <button class="btn btn-danger js-del" data-path="{{url("/alunos/$aluno->id")}}">Deletar</button>
     @endforeach
 </div>
 @endsection
